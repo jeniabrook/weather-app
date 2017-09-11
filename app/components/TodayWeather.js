@@ -3,17 +3,17 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View,
-  Image
+  View
 } from 'react-native';
 
 export default class TodayWeather extends Component {
   render() {
-    let img = this.props.today.wx_icon.replace('.gif','.png');
+    let {temp_c, wx_desc} = this.props.today;
     return (
       <View style={styles.container}>
-        <Image source={{uri: `../img/${img}`}} style={{width: 256, height: 256}}/>
-        <Text>{img}</Text>
+        <Text style={{fontSize: 20,fontWeight: 'bold'}}>Today Weather</Text>
+        <Text>{temp_c}°</Text>
+        <Text>{wx_desc}</Text>
       </View>
     );
   }
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
     alignItems: 'center',
-    backgroundColor: '#90CAF9',
   }
 });
 

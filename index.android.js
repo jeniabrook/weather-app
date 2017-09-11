@@ -7,6 +7,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 import TodayWeather from './app/components/TodayWeather';
+import ForecastWeather from './app/components/ForecastWeather';
 import * as api from './app/utils/api';
 
 export default class weatherApp extends Component {
@@ -16,11 +17,18 @@ export default class weatherApp extends Component {
       isLoading: true,
       currentWeather: {},
       forecastWeather: {},
+      position: ''
     }
   }
 
   componentDidMount() {
-    api.getAllWeather({lat:31.0461,lng:34.8516})
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log(position);
+      },
+      (error) => alert(error.message)
+    );
+    api.getAllWeather({lat:51.50,lng:-0.12})
       .then((data)=>{
         this.setState({
           isLoading: false,
@@ -40,8 +48,9 @@ export default class weatherApp extends Component {
     }
     return (
       <View style={styles.container}>
+        <Text>{this.state.position}</Text>
         <TodayWeather today={this.state.currentWeather}/>
-        <Text>{JSON.stringify(this.state.currentWeather)}</Text>
+        <ForecastWeather forecast={this.state.forecastWeather}/>
       </View>
     );
   }
