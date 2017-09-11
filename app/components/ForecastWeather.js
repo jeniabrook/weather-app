@@ -32,6 +32,7 @@ export default class ForecastWeather extends Component {
   render() {
     return (
       <View style={styles.forecastContainer}>
+        <Text style={{fontSize: 20,fontWeight: 'bold', textAlign: 'center', paddingBottom: 10}}>Forecast</Text>
         <ListView
           dataSource={this.state.forecastDataSource}
           renderRow={this.renderRow}
