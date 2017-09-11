@@ -5,13 +5,12 @@ import {
   Text,
   View
 } from 'react-native';
-import TodayWeather from './app/components/TodayWeather';
 
-export default class weatherApp extends Component {
+export default class TodayWeather extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TodayWeather/>
+        <Text>This is Today Weather Component</Text>
       </View>
     );
   }
@@ -25,4 +24,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('weatherApp', () => weatherApp);
+AppRegistry.registerComponent('TodayWeather', () => TodayWeather);
