@@ -19,6 +19,7 @@ export default class TodayWeather extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 20,
     alignItems: 'center',
     backgroundColor: '#90CAF9',
   }
