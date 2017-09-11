@@ -14,7 +14,8 @@ export default class weatherApp extends Component {
     super();
     this.state = {
       isLoading: true,
-      data: {}
+      currentWeather: {},
+      forecastWeather: {},
     }
   }
 
@@ -23,7 +24,8 @@ export default class weatherApp extends Component {
       .then((data)=>{
         this.setState({
           isLoading: false,
-          data: data
+          currentWeather: data.currentWeather,
+          forecastWeather: data.forecastWeather
         })
       });
   }
@@ -38,8 +40,8 @@ export default class weatherApp extends Component {
     }
     return (
       <View style={styles.container}>
-        <TodayWeather/>
-        <Text>{JSON.stringify(this.state.data)}</Text>
+        <TodayWeather today={this.state.currentWeather}/>
+        <Text>{JSON.stringify(this.state.currentWeather)}</Text>
       </View>
     );
   }
